@@ -40,9 +40,6 @@ struct ContentView: View {
                     })
                 }
                 .navigationTitle(Text("Notes"))
-                .toolbar {
-                    EditButton()
-                }
             }
             VStack {
                 Image(systemName: "scribble.variable").font(.largeTitle)
