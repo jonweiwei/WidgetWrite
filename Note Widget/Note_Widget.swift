@@ -44,7 +44,10 @@ struct Note_WidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            Text("The time is")
+            Text(entry.date, style: .time)
+        }
     }
 }
 
