@@ -9,12 +9,23 @@ import WidgetKit
 import SwiftUI
 
 struct WidgetView: View {
+    @Environment(\.widgetFamily) var widgetFamily
     var entry: Provider.Entry
 
     var body: some View {
         VStack {
-            Text("The time is")
-            Text(entry.date, style: .time)
+            switch widgetFamily {
+                case .systemSmall:
+                    SmallSizeView(entry: entry)
+                case .systemMedium:
+                    MediumSizeView(entry: entry)
+                case .systemLarge:
+                    LargeSizeView(entry: entry)
+                case .systemExtraLarge:
+                    ExtraLargeSizeView(entry: entry)
+                default:
+                    Text("")
+            }
         }
     }
 }

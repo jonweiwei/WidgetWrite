@@ -40,6 +40,10 @@ struct ContentView: View {
                     })
                 }
                 .navigationTitle(Text("Notes"))
+                // In the future, add functionality so that the corresponding note is opened when a widget is clicked on
+//                .onOpenURL { url in
+//
+//                }
             }
             VStack {
                 Image(systemName: "scribble.variable").font(.largeTitle)

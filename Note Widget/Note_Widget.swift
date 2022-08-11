@@ -26,6 +26,6 @@ struct Note_Widget: Widget {
 struct Note_Widget_Previews: PreviewProvider {
     static var previews: some View {
         WidgetView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
     }
 }
