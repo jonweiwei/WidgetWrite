@@ -83,6 +83,8 @@
 		1D23D11228A49B33002541FE /* MediumSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumSizeView.swift; sourceTree = "<group>"; };
 		1D23D11428A49B3D002541FE /* LargeSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeSizeView.swift; sourceTree = "<group>"; };
 		1D23D11628A49B4B002541FE /* ExtraLargeSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargeSizeView.swift; sourceTree = "<group>"; };
+		1D23D11828A5F322002541FE /* WidgetWrite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetWrite.entitlements; sourceTree = "<group>"; };
+		1D23D11928A5F44C002541FE /* Note WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Note WidgetExtension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		1D23D0C5289F6C5C002541FE = {
 			isa = PBXGroup;
 			children = (
+				1D23D11928A5F44C002541FE /* Note WidgetExtension.entitlements */,
 				1D23D0D0289F6C5D002541FE /* WidgetWrite */,
 				1D23D0F928A0BEB1002541FE /* Note Widget */,
 				1D23D0F428A0BEB1002541FE /* Frameworks */,
@@ -127,6 +130,7 @@
 		1D23D0D0289F6C5D002541FE /* WidgetWrite */ = {
 			isa = PBXGroup;
 			children = (
+				1D23D11828A5F322002541FE /* WidgetWrite.entitlements */,
 				1D23D0E6289F6D72002541FE /* Canvas */,
 				1D23D0D1289F6C5D002541FE /* WidgetWriteApp.swift */,
 				1D23D0D3289F6C5D002541FE /* ContentView.swift */,
@@ -452,6 +456,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WidgetWrite/WidgetWrite.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WidgetWrite/Preview Content\"";
@@ -482,6 +487,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WidgetWrite/WidgetWrite.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WidgetWrite/Preview Content\"";
@@ -511,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Note WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 53SCL42VUH;
@@ -538,6 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Note WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 53SCL42VUH;
