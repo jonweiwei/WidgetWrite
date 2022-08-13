@@ -35,6 +35,10 @@
 		1D23D11E28A75770002541FE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D11C28A75770002541FE /* CoreDataStack.swift */; };
 		1D23D12128A75851002541FE /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D12028A75851002541FE /* FileManager+Ext.swift */; };
 		1D23D12228A75851002541FE /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D12028A75851002541FE /* FileManager+Ext.swift */; };
+		1D23D12428A759D4002541FE /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D12328A759D4002541FE /* UserDefaults+Ext.swift */; };
+		1D23D12528A759D4002541FE /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D12328A759D4002541FE /* UserDefaults+Ext.swift */; };
+		1D23D12728A75B67002541FE /* Widget+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D12628A75B67002541FE /* Widget+Kind.swift */; };
+		1D23D12828A75B67002541FE /* Widget+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D12628A75B67002541FE /* Widget+Kind.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,8 @@
 		1D23D11928A5F44C002541FE /* Note WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Note WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		1D23D11C28A75770002541FE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1D23D12028A75851002541FE /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
+		1D23D12328A759D4002541FE /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
+		1D23D12628A75B67002541FE /* Widget+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget+Kind.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				1D23D12028A75851002541FE /* FileManager+Ext.swift */,
+				1D23D12328A759D4002541FE /* UserDefaults+Ext.swift */,
+				1D23D12628A75B67002541FE /* Widget+Kind.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,12 +339,14 @@
 			files = (
 				1D23D0DB289F6C5E002541FE /* Persistence.swift in Sources */,
 				1D23D0D4289F6C5D002541FE /* ContentView.swift in Sources */,
+				1D23D12728A75B67002541FE /* Widget+Kind.swift in Sources */,
 				1D23D0EE289F6DF1002541FE /* NoteView.swift in Sources */,
 				1D23D10128A0BEB3002541FE /* Note_Widget.intentdefinition in Sources */,
 				1D23D0D2289F6C5D002541FE /* WidgetWriteApp.swift in Sources */,
 				1D23D11D28A75770002541FE /* CoreDataStack.swift in Sources */,
 				1D23D12128A75851002541FE /* FileManager+Ext.swift in Sources */,
 				1D23D0EA289F6DC4002541FE /* NoteCanvasView.swift in Sources */,
+				1D23D12428A759D4002541FE /* UserDefaults+Ext.swift in Sources */,
 				1D23D0E5289F6D1C002541FE /* AddNewNoteView.swift in Sources */,
 				1D23D0E8289F6D88002541FE /* NoteCanvasViewController.swift in Sources */,
 				1D23D0DE289F6C5E002541FE /* WidgetWrite.xcdatamodeld in Sources */,
@@ -349,12 +359,14 @@
 			files = (
 				1D23D10C28A2F9B9002541FE /* SimpleEntry.swift in Sources */,
 				1D23D10028A0BEB3002541FE /* Note_Widget.intentdefinition in Sources */,
+				1D23D12828A75B67002541FE /* Widget+Kind.swift in Sources */,
 				1D23D10A28A2F97C002541FE /* Provider.swift in Sources */,
 				1D23D11728A49B4B002541FE /* ExtraLargeSizeView.swift in Sources */,
 				1D23D11128A49B1C002541FE /* SmallSizeView.swift in Sources */,
 				1D23D11E28A75770002541FE /* CoreDataStack.swift in Sources */,
 				1D23D12228A75851002541FE /* FileManager+Ext.swift in Sources */,
 				1D23D0FB28A0BEB1002541FE /* Note_Widget.swift in Sources */,
+				1D23D12528A759D4002541FE /* UserDefaults+Ext.swift in Sources */,
 				1D23D11328A49B33002541FE /* MediumSizeView.swift in Sources */,
 				1D23D10E28A2FA3E002541FE /* WidgetView.swift in Sources */,
 				1D23D11528A49B3D002541FE /* LargeSizeView.swift in Sources */,

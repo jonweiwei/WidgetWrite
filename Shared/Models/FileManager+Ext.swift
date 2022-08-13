@@ -13,5 +13,5 @@ extension FileManager {
 }
 
 extension FileManager {
-    static let luckyNumberFilename = "LuckyNumber.txt"
+    static let drawingFileName = "Drawing.txt"
 }
