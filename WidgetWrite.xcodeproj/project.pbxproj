@@ -149,8 +149,8 @@
 				1D23D0D3289F6C5D002541FE /* ContentView.swift */,
 				1D23D0D5289F6C5E002541FE /* Assets.xcassets */,
 				1D23D0DA289F6C5E002541FE /* Persistence.swift */,
-				1D23D0D7289F6C5E002541FE /* Preview Content */,
 				1D23D0E4289F6D1C002541FE /* AddNewNoteView.swift */,
+				1D23D0D7289F6C5E002541FE /* Preview Content */,
 			);
 			path = WidgetWrite;
 			sourceTree = "<group>";

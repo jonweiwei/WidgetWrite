@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var appInfo: AppInformation
     
     @FetchRequest(entity: Drawing.entity(), sortDescriptors: []) var drawings: FetchedResults<Drawing>
     
@@ -39,11 +40,8 @@ struct ContentView: View {
                         AddNewNoteView().environment(\.managedObjectContext, viewContext)
                     })
                 }
-                .navigationTitle(Text("Notes"))
-                // In the future, add functionality so that the corresponding note is opened when a widget is clicked on
-//                .onOpenURL { url in
-//
-//                }
+                //.navigationTitle(Text("Notes"))
+                .navigationTitle(Text("Drawings: \(appInfo.drawingCount)"))
             }
             VStack {
                 Image(systemName: "scribble.variable").font(.largeTitle)
@@ -51,6 +49,10 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
+        .onChange(of: appInfo.drawingCount) { _ in
+            let url = FileManager.appGroupContainerURL.appendingPathComponent(FileManager.drawingFileName)
+            try? String(appInfo.drawingCount).write(to: url, atomically: false, encoding: .utf8)
+        }
     }
     
     func deleteItem(at offset: IndexSet) {
@@ -59,6 +61,7 @@ struct ContentView: View {
             viewContext.delete(itemToDelete)
             do {
                 try viewContext.save()
+                appInfo.drawingCount -= 1
             }
             catch {
                 print(error)
@@ -72,4 +75,8 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .previewInterfaceOrientation(.portrait)
     }
+}
+
+class AppInformation: ObservableObject {
+    @Published var drawingCount = 0
 }

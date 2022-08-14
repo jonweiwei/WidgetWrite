@@ -10,6 +10,7 @@ import SwiftUI
 struct AddNewNoteView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment (\.presentationMode) var presentationMode
+    @EnvironmentObject var appInfo: AppInformation
     
     @State private var noteTitle = ""
     
@@ -34,6 +35,7 @@ struct AddNewNoteView: View {
                     
                     do {
                         try viewContext.save()
+                        appInfo.drawingCount += 1
                     }
                     catch {
                         print(error)

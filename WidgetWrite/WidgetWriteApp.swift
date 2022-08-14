@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct WidgetWriteApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject var appInfo = AppInformation()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext).environmentObject(appInfo)
         }
     }
 }
