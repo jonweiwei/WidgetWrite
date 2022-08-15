@@ -24,9 +24,6 @@
 		1D23D10028A0BEB3002541FE /* Note_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D0FC28A0BEB1002541FE /* Note_Widget.intentdefinition */; };
 		1D23D10128A0BEB3002541FE /* Note_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D0FC28A0BEB1002541FE /* Note_Widget.intentdefinition */; };
 		1D23D10428A0BEB3002541FE /* Note WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1D23D0F328A0BEB1002541FE /* Note WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1D23D10A28A2F97C002541FE /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D10928A2F97C002541FE /* Provider.swift */; };
-		1D23D10C28A2F9B9002541FE /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D10B28A2F9B9002541FE /* SimpleEntry.swift */; };
-		1D23D10E28A2FA3E002541FE /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D10D28A2FA3E002541FE /* WidgetView.swift */; };
 		1D23D11128A49B1C002541FE /* SmallSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D11028A49B1C002541FE /* SmallSizeView.swift */; };
 		1D23D11328A49B33002541FE /* MediumSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D11228A49B33002541FE /* MediumSizeView.swift */; };
 		1D23D11528A49B3D002541FE /* LargeSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23D11428A49B3D002541FE /* LargeSizeView.swift */; };
@@ -84,9 +81,6 @@
 		1D23D0FC28A0BEB1002541FE /* Note_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Note_Widget.intentdefinition; sourceTree = "<group>"; };
 		1D23D0FD28A0BEB3002541FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D23D0FF28A0BEB3002541FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D23D10928A2F97C002541FE /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		1D23D10B28A2F9B9002541FE /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
-		1D23D10D28A2FA3E002541FE /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		1D23D11028A49B1C002541FE /* SmallSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSizeView.swift; sourceTree = "<group>"; };
 		1D23D11228A49B33002541FE /* MediumSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumSizeView.swift; sourceTree = "<group>"; };
 		1D23D11428A49B3D002541FE /* LargeSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeSizeView.swift; sourceTree = "<group>"; };
@@ -190,9 +184,6 @@
 				1D23D0FC28A0BEB1002541FE /* Note_Widget.intentdefinition */,
 				1D23D0FD28A0BEB3002541FE /* Assets.xcassets */,
 				1D23D0FF28A0BEB3002541FE /* Info.plist */,
-				1D23D10928A2F97C002541FE /* Provider.swift */,
-				1D23D10B28A2F9B9002541FE /* SimpleEntry.swift */,
-				1D23D10D28A2FA3E002541FE /* WidgetView.swift */,
 			);
 			path = "Note Widget";
 			sourceTree = "<group>";
@@ -357,10 +348,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D23D10C28A2F9B9002541FE /* SimpleEntry.swift in Sources */,
 				1D23D10028A0BEB3002541FE /* Note_Widget.intentdefinition in Sources */,
 				1D23D12828A75B67002541FE /* Widget+Kind.swift in Sources */,
-				1D23D10A28A2F97C002541FE /* Provider.swift in Sources */,
 				1D23D11728A49B4B002541FE /* ExtraLargeSizeView.swift in Sources */,
 				1D23D11128A49B1C002541FE /* SmallSizeView.swift in Sources */,
 				1D23D11E28A75770002541FE /* CoreDataStack.swift in Sources */,
@@ -368,7 +357,6 @@
 				1D23D0FB28A0BEB1002541FE /* Note_Widget.swift in Sources */,
 				1D23D12528A759D4002541FE /* UserDefaults+Ext.swift in Sources */,
 				1D23D11328A49B33002541FE /* MediumSizeView.swift in Sources */,
-				1D23D10E28A2FA3E002541FE /* WidgetView.swift in Sources */,
 				1D23D11528A49B3D002541FE /* LargeSizeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

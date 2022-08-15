@@ -9,10 +9,14 @@ import SwiftUI
 
 struct AddNewNoteView: View {
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.managedObjectContext) var widgetContext
     @Environment (\.presentationMode) var presentationMode
     @EnvironmentObject var appInfo: AppInformation
     
+    @FetchRequest(entity: LatestDrawing.entity(), sortDescriptors: []) var latestDrawing: FetchedResults<LatestDrawing>
+    
     @State private var noteTitle = ""
+    
     
     var body: some View {
         NavigationView {
@@ -33,8 +37,16 @@ struct AddNewNoteView: View {
                     drawing.title = noteTitle
                     drawing.id = UUID()
                     
+                    if(latestDrawing.count == 0) {
+                        let latestNote = LatestDrawing(context: widgetContext)
+                        latestNote.title = noteTitle
+                    } else {
+                        latestDrawing.first?.title = noteTitle
+                    }
+                    
                     do {
                         try viewContext.save()
+                        try widgetContext.save()
                         appInfo.drawingCount += 1
                     }
                     catch {

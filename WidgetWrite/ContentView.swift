@@ -13,6 +13,7 @@ struct ContentView: View {
     @EnvironmentObject var appInfo: AppInformation
     
     @FetchRequest(entity: Drawing.entity(), sortDescriptors: []) var drawings: FetchedResults<Drawing>
+    @FetchRequest(entity: LatestDrawing.entity(), sortDescriptors: []) var latestDrawing: FetchedResults<LatestDrawing>
     
     @State private var showSheet = false
     
@@ -40,8 +41,10 @@ struct ContentView: View {
                         AddNewNoteView().environment(\.managedObjectContext, viewContext)
                     })
                 }
+                .navigationTitle(Text(String(latestDrawing.count)))
                 //.navigationTitle(Text("Notes"))
-                .navigationTitle(Text("Drawings: \(appInfo.drawingCount)"))
+                //.navigationTitle(Text(String((latestDrawing.first?.title)! )))
+                //.navigationTitle(Text("Drawings: \(appInfo.drawingCount)"))
             }
             VStack {
                 Image(systemName: "scribble.variable").font(.largeTitle)
@@ -49,10 +52,10 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
-        .onChange(of: appInfo.drawingCount) { _ in
-            let url = FileManager.appGroupContainerURL.appendingPathComponent(FileManager.drawingFileName)
-            try? String(appInfo.drawingCount).write(to: url, atomically: false, encoding: .utf8)
-        }
+//        .onChange(of: appInfo.drawingCount) { _ in
+//            let url = FileManager.appGroupContainerURL.appendingPathComponent(FileManager.drawingFileName)
+//            try? String(appInfo.drawingCount).write(to: url, atomically: false, encoding: .utf8)
+//        }
     }
     
     func deleteItem(at offset: IndexSet) {
