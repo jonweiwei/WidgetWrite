@@ -38,7 +38,7 @@ struct WidgetView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        return Text("Drawings: \(itemsCount)")
+        return Text("Drawings: \(drawingID)")
 //        VStack {
 //            switch widgetFamily {
 //                case .systemSmall:
@@ -55,7 +55,7 @@ struct WidgetView: View {
 //        }
     }
     
-    var itemsCount: String {
+    var drawingID: String {
         let moc = CoreDataStack.shared.managedObjectContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LatestDrawing")
         request.predicate = NSPredicate(format: "title == %@", "test")
