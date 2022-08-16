@@ -12,6 +12,8 @@ import PencilKit
 struct NoteCanvasView: UIViewControllerRepresentable {
     @Environment(\.managedObjectContext) private var viewContext
     
+    @FetchRequest(entity: LatestDrawing.entity(), sortDescriptors: []) var latestDrawing: FetchedResults<LatestDrawing>
+    
     func updateUIViewController(_ uiViewController: NoteCanvasViewController, context: Context) {
         uiViewController.noteData = data
     }
@@ -31,6 +33,8 @@ struct NoteCanvasView: UIViewControllerRepresentable {
                 let result = try viewContext.fetch(request)
                 let obj = result.first
                 obj?.setValue(data, forKey: "canvasData")
+                latestDrawing.first?.title = result.first?.title
+                latestDrawing.first?.canvasData = data
                 do {
                     try viewContext.save()
                 }
