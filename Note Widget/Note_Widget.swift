@@ -55,23 +55,23 @@ struct WidgetView: View {
 //        }
     }
     
-    var drawingID: String {
-        let moc = CoreDataStack.shared.managedObjectContext
+    var drawingID: Int {
+//        let moc = CoreDataStack.shared.managedObjectContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LatestDrawing")
-        request.predicate = NSPredicate(format: "title == %@", "test")
-        do {
-            let result = try moc.fetch(request)
-            return String(result.count)
-        } catch {
-            print(error)
-            return ""
-        }
+//        request.predicate = NSPredicate(format: "title == %@", "test")
 //        do {
-//            return try CoreDataStack.shared.managedObjectContext.count(for: request)
+//            let result = try moc.fetch(request)
+//            return String(result.count)
 //        } catch {
-//            print(error.localizedDescription)
-//            return 0
+//            print(error)
+//            return ""
 //        }
+        do {
+            return try CoreDataStack.shared.managedObjectContext.count(for: request)
+        } catch {
+            print(error.localizedDescription)
+            return 0
+        }
     }
 }
 

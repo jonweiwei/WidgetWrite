@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct AddNewNoteView: View {
     @Environment(\.managedObjectContext) var viewContext
@@ -37,16 +38,18 @@ struct AddNewNoteView: View {
                     drawing.title = noteTitle
                     drawing.id = UUID()
                     
+                    let context = CoreDataStack.shared.workingContext
                     if(latestDrawing.count == 0) {
-                        let latestNote = LatestDrawing(context: widgetContext)
+                        let latestNote = LatestDrawing(context: context)
                         latestNote.title = noteTitle
                     } else {
                         latestDrawing.first?.title = noteTitle
                     }
+                    CoreDataStack.shared.saveWorkingContext(context: context)
+                    WidgetCenter.shared.reloadTimelines(ofKind: WidgetKind.coreData)
                     
                     do {
                         try viewContext.save()
-                        try widgetContext.save()
                         appInfo.drawingCount += 1
                     }
                     catch {

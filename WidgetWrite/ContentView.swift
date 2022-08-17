@@ -42,8 +42,8 @@ struct ContentView: View {
                     })
                 }
                 //.navigationTitle(Text(String((drawings.first?.title)! )))
-                //.navigationTitle(Text("Notes"))
-                .navigationTitle(Text(String((latestDrawing.first?.title)! )))
+                .navigationTitle(Text("Notes"))
+                //.navigationTitle(Text(String((latestDrawing.first?.title)! )))
                 //.navigationTitle(Text("Drawings: \(appInfo.drawingCount)"))
             }
             VStack {
