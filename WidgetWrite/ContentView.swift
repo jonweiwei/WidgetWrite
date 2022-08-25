@@ -52,10 +52,6 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
-//        .onChange(of: appInfo.drawingCount) { _ in
-//            let url = FileManager.appGroupContainerURL.appendingPathComponent(FileManager.drawingFileName)
-//            try? String(appInfo.drawingCount).write(to: url, atomically: false, encoding: .utf8)
-//        }
     }
     
     func deleteItem(at offset: IndexSet) {

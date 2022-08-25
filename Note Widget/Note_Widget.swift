@@ -38,7 +38,8 @@ struct WidgetView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        return Text("Drawings: \(drawingID)")
+//        return Text("Drawings: \(drawingID)")
+        return Text("Drawings: 0")
 //        VStack {
 //            switch widgetFamily {
 //                case .systemSmall:
