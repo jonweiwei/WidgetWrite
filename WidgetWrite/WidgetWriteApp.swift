@@ -11,12 +11,11 @@ import SwiftUI
 struct WidgetWriteApp: App {
     let persistenceController = PersistenceController.shared
     @StateObject var appInfo = AppInformation()
-    let moc = CoreDataStack.shared.managedObjectContext
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext).environmentObject(appInfo).environment(\.managedObjectContext, moc)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext).environmentObject(appInfo).environment(\.managedObjectContext, CoreDataStack.shared.managedObjectContext)
         }
     }
 }

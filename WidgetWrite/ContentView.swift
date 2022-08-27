@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var appInfo: AppInformation
+    @Environment(\.managedObjectContext) private var managedObject
     
     @FetchRequest(entity: Drawing.entity(), sortDescriptors: []) var drawings: FetchedResults<Drawing>
     @FetchRequest(entity: LatestDrawing.entity(), sortDescriptors: []) var latestDrawing: FetchedResults<LatestDrawing>
@@ -24,6 +25,7 @@ struct ContentView: View {
                     ForEach(drawings) { drawing in
                         NavigationLink(destination: NoteView(id: drawing.id, data: drawing.canvasData, title: drawing.title), label: {
                             Text(drawing.title ?? "Untitled")
+                            // let latestDrawing = CoreDataStack.shared.workingContext
                         })
                     }
                     .onDelete(perform: deleteItem)
@@ -38,7 +40,7 @@ struct ContentView: View {
                     })
                     .foregroundColor(.blue)
                     .sheet(isPresented: $showSheet, content: {
-                        AddNewNoteView().environment(\.managedObjectContext, viewContext)
+                        AddNewNoteView().environment(\.managedObjectContext, viewContext).environmentObject(appInfo).environment(\.managedObjectContext, managedObject)
                     })
                 }
                 //.navigationTitle(Text(String((drawings.first?.title)! )))

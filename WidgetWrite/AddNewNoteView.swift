@@ -11,9 +11,9 @@ import CoreData
 
 struct AddNewNoteView: View {
     @Environment(\.managedObjectContext) var viewContext
-    @Environment(\.managedObjectContext) private var managedObjectContext
-    @Environment (\.presentationMode) var presentationMode
     @EnvironmentObject var appInfo: AppInformation
+    @Environment(\.managedObjectContext) var managedObject
+    @Environment (\.presentationMode) var presentationMode
     
     @FetchRequest(entity: LatestDrawing.entity(), sortDescriptors: []) var latestDrawing: FetchedResults<LatestDrawing>
     
