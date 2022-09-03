@@ -9,14 +9,16 @@ import CoreData
 import WidgetKit
 import SwiftUI
 import Intents
+import UIKit
+import PencilKit
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), text: "", configuration: ConfigurationIntent())
+        SimpleEntry(date: Date(), text: "Your Note", data: Data(), configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date(), text: "", configuration: configuration)
+        let entry = SimpleEntry(date: Date(), text: "Your Note", data: Data(), configuration: configuration)
         completion(entry)
     }
 
@@ -25,11 +27,12 @@ struct Provider: IntentTimelineProvider {
         
         let userDefaults = UserDefaults(suiteName: "group.com.widgetwrite")
         let text = userDefaults?.value(forKey: "text") as? String ?? "No Text"
+        let drawing = userDefaults?.value(forKey: "drawing") as? Data ?? Data()
         
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, text: text, configuration: configuration)
+            let entry = SimpleEntry(date: entryDate, text: text, data: drawing, configuration: configuration)
             entries.append(entry)
         }
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -40,6 +43,7 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let text: String
+    let data: Data
     let configuration: ConfigurationIntent
 }
 
@@ -48,8 +52,17 @@ struct WidgetView: View {
     var entry: Provider.Entry
 
     var body: some View {
-//        return Text("Drawings: \(drawingID)")
-        return Text(entry.text)
+        // Text(entry.text)
+//        if entry.data.isEmpty {
+//            Text("No Data")
+//        } else {
+//            Text("Hello")
+//        }
+         let img = UIImage(data: entry.data)
+        // let background = UIImage(named: "whitebackground")
+         Image(uiImage: img ?? UIImage())
+            //entry.data
+        //return Text(entry.text)
 //        VStack {
 //            switch widgetFamily {
 //                case .systemSmall:
@@ -65,25 +78,6 @@ struct WidgetView: View {
 //            }
 //        }
     }
-    
-    var drawingID: Int {
-//        let moc = CoreDataStack.shared.managedObjectContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LatestDrawing")
-//        request.predicate = NSPredicate(format: "title == %@", "test")
-//        do {
-//            let result = try moc.fetch(request)
-//            return String(result.count)
-//        } catch {
-//            print(error)
-//            return ""
-//        }
-        do {
-            return try CoreDataStack.shared.managedObjectContext.count(for: request)
-        } catch {
-            print(error.localizedDescription)
-            return 0
-        }
-    }
 }
 
 @main
@@ -97,12 +91,5 @@ struct Note_Widget: Widget {
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
         .configurationDisplayName("My Note")
         .description("View your saved notes.")
-    }
-}
-
-struct Note_Widget_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetView(entry: SimpleEntry(date: Date(), text: "", configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
     }
 }
