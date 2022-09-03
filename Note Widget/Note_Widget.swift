@@ -59,6 +59,7 @@ struct WidgetView: View {
 //            Text("Hello")
 //        }
          let img = UIImage(data: entry.data)
+        // check if img is returning anything?
         // let background = UIImage(named: "whitebackground")
          Image(uiImage: img ?? UIImage())
             //entry.data
