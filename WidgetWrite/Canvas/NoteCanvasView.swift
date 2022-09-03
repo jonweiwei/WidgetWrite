@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import PencilKit
+import WidgetKit
 
 struct NoteCanvasView: UIViewControllerRepresentable {
     @Environment(\.managedObjectContext) private var viewContext
@@ -35,6 +36,12 @@ struct NoteCanvasView: UIViewControllerRepresentable {
                 obj?.setValue(data, forKey: "canvasData")
                 latestDrawing.first?.title = result.first?.title
                 latestDrawing.first?.canvasData = data
+                
+                let userDefaults = UserDefaults(suiteName: "group.com.widgetwrite")
+                userDefaults?.setValue(result.first?.title, forKey: "text")
+                userDefaults?.setValue(data, forKey: "drawing")
+                WidgetCenter.shared.reloadAllTimelines()
+                
                 do {
                     try viewContext.save()
                 }

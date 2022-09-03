@@ -10,36 +10,46 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: TimelineProvider {
+struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+        SimpleEntry(date: Date(), text: "", configuration: ConfigurationIntent())
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date())
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        let entry = SimpleEntry(date: Date(), text: "", configuration: configuration)
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        let midnight = Calendar.current.startOfDay(for: Date())
-        let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
-        let entries = [SimpleEntry(date: midnight)]
-        let timeline = Timeline<Entry>(entries: entries, policy: .after(nextMidnight))
+    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+        var entries: [SimpleEntry] = []
+        
+        let userDefaults = UserDefaults(suiteName: "group.com.widgetwrite")
+        let text = userDefaults?.value(forKey: "text") as? String ?? "No Text"
+        
+        let currentDate = Date()
+        for hourOffset in 0 ..< 5 {
+            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+            let entry = SimpleEntry(date: entryDate, text: text, configuration: configuration)
+            entries.append(entry)
+        }
+        let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
+    let text: String
+    let configuration: ConfigurationIntent
 }
 
 struct WidgetView: View {
-    @Environment(\.widgetFamily) var widgetFamily
+    // @Environment(\.widgetFamily) var widgetFamily
     var entry: Provider.Entry
 
     var body: some View {
 //        return Text("Drawings: \(drawingID)")
-        return Text("Drawings: 0")
+        return Text(entry.text)
 //        VStack {
 //            switch widgetFamily {
 //                case .systemSmall:
@@ -81,7 +91,7 @@ struct Note_Widget: Widget {
     let kind: String = "Note_Widget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             WidgetView(entry: entry)
         }
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
@@ -92,7 +102,7 @@ struct Note_Widget: Widget {
 
 struct Note_Widget_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(entry: SimpleEntry(date: Date()))
+        WidgetView(entry: SimpleEntry(date: Date(), text: "", configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
     }
 }
