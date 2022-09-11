@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 import PencilKit
 import WidgetKit
+import UIKit
 
 struct NoteCanvasView: UIViewControllerRepresentable {
     @Environment(\.managedObjectContext) private var viewContext
@@ -40,6 +41,16 @@ struct NoteCanvasView: UIViewControllerRepresentable {
                 let userDefaults = UserDefaults(suiteName: "group.com.widgetwrite")
                 userDefaults?.setValue(result.first?.title, forKey: "text")
                 userDefaults?.setValue(data, forKey: "drawing")
+                
+                let canvasImage: UIImage = viewController.saveCanvasImage() ?? UIImage()
+
+                guard let imageData = canvasImage.jpegData(compressionQuality: 0.5) else { return }
+                let encoded = try! PropertyListEncoder().encode(imageData)
+                userDefaults?.set(encoded, forKey: "drawingImage")
+                
+//                if let pngRepresentation = canvasImage.pngData() {
+//                    userDefaults?.setValue(pngRepresentation, forKey: "drawingImage")
+//                }
                 WidgetCenter.shared.reloadAllTimelines()
                 
                 do {

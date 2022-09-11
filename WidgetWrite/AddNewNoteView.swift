@@ -19,7 +19,6 @@ struct AddNewNoteView: View {
     
     @State private var noteTitle = ""
     
-    
     var body: some View {
         NavigationView {
             Form {
