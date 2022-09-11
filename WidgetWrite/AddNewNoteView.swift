@@ -12,7 +12,6 @@ import CoreData
 struct AddNewNoteView: View {
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var appInfo: AppInformation
-    @Environment(\.managedObjectContext) var managedObject
     @Environment (\.presentationMode) var presentationMode
     
     @FetchRequest(entity: LatestDrawing.entity(), sortDescriptors: []) var latestDrawing: FetchedResults<LatestDrawing>
@@ -41,18 +40,6 @@ struct AddNewNoteView: View {
                     let userDefaults = UserDefaults(suiteName: "group.com.widgetwrite")
                     userDefaults?.setValue(drawing.title, forKey: "text")
                     WidgetCenter.shared.reloadAllTimelines()
-                    
-//                    let drawingContext = CoreDataStack.shared.workingContext
-//                    let latestNote = LatestDrawing(context: drawingContext)
-//                    latestNote.title = noteTitle
-//                    if(latestDrawing.count == 0) {
-//                        let latestNote = LatestDrawing(context: context)
-//                        latestNote.title = noteTitle
-//                    } else {
-//                        latestDrawing.first?.title = noteTitle
-//                    }
-//                    CoreDataStack.shared.saveWorkingContext(context: drawingContext)
-//                    WidgetCenter.shared.reloadTimelines(ofKind: WidgetKind.coreData)
                     
                     do {
                         try viewContext.save()

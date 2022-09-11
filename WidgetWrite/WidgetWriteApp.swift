@@ -15,7 +15,7 @@ struct WidgetWriteApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext).environmentObject(appInfo).environment(\.managedObjectContext, CoreDataStack.shared.managedObjectContext)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext).environmentObject(appInfo)
         }
     }
 }

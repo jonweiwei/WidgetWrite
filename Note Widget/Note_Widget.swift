@@ -53,37 +53,10 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct WidgetView: View {
-    // @Environment(\.widgetFamily) var widgetFamily
     var entry: Provider.Entry
 
     var body: some View {
-        // Text(entry.text)
-//        if entry.data.isEmpty {
-//            Text("No Data")
-//        } else {
-//            Text("Hello")
-//        }
         Image(uiImage: entry.uiimage)
-        // let img = UIImage(data: entry.data)
-        // check if img is returning anything?
-        // let background = UIImage(named: "whitebackground")
-        // Image(uiImage: img ?? UIImage())
-            //entry.data
-        //return Text(entry.text)
-//        VStack {
-//            switch widgetFamily {
-//                case .systemSmall:
-//                    SmallSizeView(entry: entry)
-//                case .systemMedium:
-//                    MediumSizeView(entry: entry)
-//                case .systemLarge:
-//                    LargeSizeView(entry: entry)
-//                case .systemExtraLarge:
-//                    ExtraLargeSizeView(entry: entry)
-//                default:
-//                    Text("")
-//            }
-//        }
     }
 }
 
