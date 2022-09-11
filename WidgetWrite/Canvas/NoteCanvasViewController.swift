@@ -46,12 +46,16 @@ class NoteCanvasViewController: UIViewController {
     }
     
     func saveCanvasImage() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(canvas.frame.size, false, 0.0)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let drawing = canvas.drawing.image(from: canvas.bounds, scale: 0)
+        let image = autoreleasepool { () -> UIImage in
+            UIGraphicsBeginImageContextWithOptions(canvas.frame.size, false, 0.0)
+            drawing.draw(in: CGRect(origin: CGPoint.zero, size: canvas.frame.size))
+            let createdImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return createdImage!
+        }
         return image
     }
-    // change this to what it was before?????? idek
 }
 
 extension NoteCanvasViewController:PKToolPickerObserver, PKCanvasViewDelegate {

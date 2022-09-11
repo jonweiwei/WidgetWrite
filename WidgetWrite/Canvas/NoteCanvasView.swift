@@ -48,9 +48,6 @@ struct NoteCanvasView: UIViewControllerRepresentable {
                 let encoded = try! PropertyListEncoder().encode(imageData)
                 userDefaults?.set(encoded, forKey: "drawingImage")
                 
-//                if let pngRepresentation = canvasImage.pngData() {
-//                    userDefaults?.setValue(pngRepresentation, forKey: "drawingImage")
-//                }
                 WidgetCenter.shared.reloadAllTimelines()
                 
                 do {
