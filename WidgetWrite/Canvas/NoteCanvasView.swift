@@ -38,6 +38,8 @@ struct NoteCanvasView: UIViewControllerRepresentable {
                 latestDrawing.first?.title = result.first?.title
                 latestDrawing.first?.canvasData = data
                 
+                obj?.timestamp = Date.now
+                
                 let userDefaults = UserDefaults(suiteName: "group.com.widgetwrite")
                 userDefaults?.setValue(result.first?.title, forKey: "text")
                 userDefaults?.setValue(data, forKey: "drawing")

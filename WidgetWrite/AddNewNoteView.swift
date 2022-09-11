@@ -26,7 +26,7 @@ struct AddNewNoteView: View {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
-            .navigationTitle(Text("Add New Note"))
+            .navigationTitle(Text("New Note"))
             .navigationBarItems(leading: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
@@ -36,6 +36,7 @@ struct AddNewNoteView: View {
                     let drawing = Drawing(context: viewContext)
                     drawing.title = noteTitle
                     drawing.id = UUID()
+                    drawing.timestamp = Date.now
                     
                     let userDefaults = UserDefaults(suiteName: "group.com.widgetwrite")
                     userDefaults?.setValue(drawing.title, forKey: "text")

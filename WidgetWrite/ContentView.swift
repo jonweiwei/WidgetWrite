@@ -16,6 +16,7 @@ struct ContentView: View {
     @FetchRequest(entity: LatestDrawing.entity(), sortDescriptors: []) var latestDrawing: FetchedResults<LatestDrawing>
     
     @State private var showSheet = false
+    @State private var order: SortOrder = .forward
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,13 @@ struct ContentView: View {
                 List {
                     ForEach(drawings) { drawing in
                         NavigationLink(destination: NoteView(id: drawing.id, data: drawing.canvasData, title: drawing.title), label: {
-                            Text(drawing.title ?? "Untitled")
+                            VStack(alignment: .leading) {
+                                Text(drawing.title ?? "Untitled").font(.system(size: 19, weight: .medium, design: .default))
+                                let timestamp = drawing.timestamp
+                                if timestamp != nil {
+                                    Text(drawing.timestamp?.formatted() ?? "").font(.system(size: 15, weight: .light, design: .default))
+                                }
+                            }
                         })
                     }
                     .onDelete(perform: deleteItem)
@@ -33,7 +40,7 @@ struct ContentView: View {
                     }, label: {
                         HStack {
                             Image(systemName: "plus")
-                            Text("Add Note")
+                            Text("New Note")
                         }
                     })
                     .foregroundColor(.blue)
@@ -42,6 +49,11 @@ struct ContentView: View {
                     })
                 }
                 .navigationTitle(Text("Notes"))
+                .toolbar {
+                    Button(action: toggleSortOrder) {
+                        Label("Sort Oder", systemImage: "arrow.up.arrow.down")
+                    }
+                }
             }
             VStack {
                 Image(systemName: "scribble.variable").font(.largeTitle)
@@ -63,6 +75,11 @@ struct ContentView: View {
                 print(error)
             }
         }
+    }
+    
+    func toggleSortOrder() {
+        order = order == .reverse ? .forward : .reverse
+        drawings.sortDescriptors = [SortDescriptor(\.timestamp, order: order)]
     }
 }
 
