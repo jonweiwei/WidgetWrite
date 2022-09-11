@@ -56,7 +56,9 @@ struct WidgetView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        Image(uiImage: entry.uiimage)
+        GeometryReader { geo in
+            Image(uiImage: entry.uiimage).resizable().aspectRatio(contentMode: .fit).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+        }
     }
 }
 
