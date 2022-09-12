@@ -1,2 +1,2 @@
 # WidgetWrite
-A note-taking app that allows users to display notes as widgets on their home screen
+A note-taking app that allows users to display their most recently opened note as a widget.
