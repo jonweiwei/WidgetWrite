@@ -1,5 +1,5 @@
 # WidgetWrite
-#### A note-taking app that allows users to display their most recently opened note as a widget.
+#### An iOS note-taking app that allows users to display their most recently opened note as a widget.
 
 ## The App
 The app displays all notes in a simple list with their titles and last edited timestamps. By default, notes are sorted by newest but the button on the top right can be used to toggle the sort method from newest to oldest and vice versa. Users can delete notes by swiping left on a specific note to reveal the delete button.
