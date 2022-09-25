@@ -56,6 +56,7 @@ struct AddNewNoteView: View {
                 Text("Save")
             }))
         }
+//        .preferredColorScheme(.light)
     }
 }
 

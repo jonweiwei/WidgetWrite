@@ -13,6 +13,7 @@ import UIKit
 import PencilKit
 
 struct Provider: IntentTimelineProvider {
+    
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), text: "Your Note", data: Data(), uiimage: UIImage(), configuration: ConfigurationIntent())
     }
@@ -69,6 +70,7 @@ struct Note_Widget: Widget {
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             WidgetView(entry: entry)
+//                .background(Color.white)
         }
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
         .configurationDisplayName("My Note")

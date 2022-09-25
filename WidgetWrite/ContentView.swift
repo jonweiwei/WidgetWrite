@@ -61,6 +61,7 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
+//        .preferredColorScheme(.light)
     }
     
     func deleteItem(at offset: IndexSet) {

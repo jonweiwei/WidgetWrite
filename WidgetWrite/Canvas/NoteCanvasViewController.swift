@@ -43,6 +43,10 @@ class NoteCanvasViewController: UIViewController {
         if let note = try? PKDrawing(data: noteData) {
             canvas.drawing = note
         }
+//        toolPicker.colorUserInterfaceStyle = .light
+//        if #available(iOS 13.0, *) {
+//            overrideUserInterfaceStyle = .light
+//        }
     }
     
     func saveCanvasImage() -> UIImage? {
